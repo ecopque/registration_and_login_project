@@ -27,13 +27,24 @@ class RegisterController():
     def check_data(cls, name, email,  password):
         if len(name) > 50 or len(name) < 3:
             return 2
-
         if len(email) > 30:
             return 3
-        
         if len(password) > 500 or len(password) < 6:
             return 4
+        else:
+            return 1
 
+    @classmethod
+    def register(cls, name, email, password):
+        session = return_session()
+        
+        user = session.query(Person).filter(Person.email == email).all()
+        if len(user) > 0:
+            return 5
+        
+        verified_data = cls.check_data(name, email, password)
+        if verified_data != 1:
+            return verified_data
 
 
 
