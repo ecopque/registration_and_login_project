@@ -24,28 +24,43 @@ def return_session():
 
 class RegisterController():
     @classmethod
-    def check_data(cls, name, email,  password):
-        if len(name) > 50 or len(name) < 3:
+    def check_data(cls, ck_name, ck_email,  ck_password):
+        if len(ck_name) > 50 or len(ck_name) < 3:
             return 2
-        if len(email) > 30:
+        if len(ck_email) > 30:
             return 3
-        if len(password) > 500 or len(password) < 6:
+        if len(ck_password) > 500 or len(ck_password) < 6:
             return 4
         else:
             return 1
 
     @classmethod
-    def register(cls, name, email, password):
+    def register(cls, rg_name, rg_email, rg_password):
         session = return_session()
         
-        user = session.query(Person).filter(Person.email == email).all()
+        user = session.query(Person).filter(Person.email == rg_email).all()
         if len(user) > 0:
             return 5
         
-        verified_data = cls.check_data(name, email, password)
+        verified_data = cls.check_data(rg_name, rg_email, rg_password)
         if verified_data != 1:
-            return verified_data
+            return verified_data # Data is not valid.
+        
+        try:
+            # Generating password hash:
+            password_hash = hashlib.sha256(rg_password.encode()).hexdigest()
 
+            # Creating the Person object and inserting it into the database:
+            new_user = Person(name=rg_name, email=rg_email, password=password_hash)
+            session.add(new_user)
+            session.commit()
+            return 1
+                                
+        except Exception as error:
+            print(f'Error: {error}')
+            return 3
+
+print(RegisterController.register('Edson', 'me@ecop.org', '123456'))
 
 
 
