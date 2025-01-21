@@ -1,4 +1,4 @@
-# FILE: registration_and_login_project/mvc.txt
+# FILE: /registration_and_login_project/mvc.txt
 
 . This project will serve to continue using the resources: MVC, ORM, OOP, etc;
 . This project will be a REGISTRATION and LOGIN system;
