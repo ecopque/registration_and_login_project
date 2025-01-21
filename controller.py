@@ -28,4 +28,14 @@ class RegisterController():
         if len(name) > 50 or len(name) < 3:
             return 2
 
+        if len(email) > 30:
+            return 3
+        
+        if len(password) > 500 or len(password) < 6:
+            return 4
+
+
+
+
+
 # Edson Copque | https://linktr.ee/edsoncopque
