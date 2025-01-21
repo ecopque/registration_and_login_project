@@ -1,4 +1,4 @@
-# FILE: ecommerce_project/.gitignore
+# FILE: registration_and_login_project/.gitignore
 
 /venv_blog
 /djangoapp/static/
@@ -110,6 +110,8 @@ celerybeat-schedule.*
 .env
 
 .venv
+.venv_rl
+venv_rl
 env/
 venv/
 venv_grocery/
