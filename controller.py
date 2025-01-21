@@ -17,5 +17,15 @@ def return_session():
     # Creating the connection to the database: #19:
     CONN = f'mysql+pymysql://{USER}:{PASSWORD}@{HOST}:{PORT}/{DATABASE}'
 
+    # Creating the SQLAlchemy engine and session: #20:
+    engine = create_engine(CONN, echo=True)
+    Session = sessionmaker(bind=engine)
+    return Session()
+
+class RegisterController():
+    @classmethod
+    def check_data(cls, name, email,  password):
+        if len(name) > 50 or len(name) < 3:
+            return 2
 
 # Edson Copque | https://linktr.ee/edsoncopque
