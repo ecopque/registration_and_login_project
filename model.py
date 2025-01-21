@@ -1,6 +1,9 @@
 # FILE: /registration_and_login_project/model.py
 
-# pip install sqlalchemy #8:
+# Installing for database interaction: #8:
+# pip install sqlalchemy
+# pip install pymysql
+
 from sqlalchemy import create_engine, Column, Integer, String, ForeignKey
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
@@ -28,6 +31,7 @@ Base = declarative_base()
 
 # Creating tables in the database if they don't exist: #14:
 class Person(Base):
+    __tablename__ = 'person'
     id = Column(Integer, primary_key=True)
     name = Column(String(50))
     email = Column(String(30))
@@ -36,6 +40,8 @@ class Person(Base):
 # Creating tables based on defined models: #15:
 Base.metadata.create_all(engine)
 
-
+# Consult the database: #16:
+# USE registration_and_login;
+# SHOW TABLES;
 
 # Edson Copque | https://linktr.ee/edsoncopque
