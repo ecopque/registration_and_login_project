@@ -60,7 +60,7 @@ class RegisterController():
             print(f'Error: {error}')
             return 3
 
-print(RegisterController.register('Edson', 'me@ecop.org', '123456'))
+# print(RegisterController.register('Edson', 'me@ecop.org', '123456'))
 
 
 
