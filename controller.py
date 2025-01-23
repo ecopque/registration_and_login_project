@@ -84,5 +84,4 @@ class LoginController():
 # print(RegisterController.register('Edson', 'me@ecop.org', '123456'))
 # print(LoginController.login('me@ecop.org', '123456'))
 
-
 # Edson Copque | https://linktr.ee/edsoncopque
