@@ -60,6 +60,11 @@ class RegisterController():
             print(f'Error: {error}')
             return 3
 
+class LoginController():
+    @classmethod
+    def login(cls, email, password):
+
+
 # print(RegisterController.register('Edson', 'me@ecop.org', '123456'))
 
 
