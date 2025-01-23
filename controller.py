@@ -60,9 +60,8 @@ class RegisterController():
             session.commit()
             return 1
                                 
-        except Exception as error:
-            print(f'Error: {error}')
-            return 3
+        except:
+            return 6
 
 # Login Controller: Class for handling user login: #27:
 class LoginController():
