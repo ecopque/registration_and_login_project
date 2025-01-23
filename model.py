@@ -12,8 +12,8 @@ from sqlalchemy.orm import sessionmaker
 USER = 'root'
 PASSWORD = '123456'
 HOST = 'localhost'
-DATABASE = 'registration_and_login'
 PORT = '3306'
+DATABASE = 'registration_and_login'
 
 # Creating database through terminal (mariadb/mysql): #10:
 # CREATE DATABASE registration_and_login;
