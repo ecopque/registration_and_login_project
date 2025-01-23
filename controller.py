@@ -80,8 +80,10 @@ class LoginController():
         else:
             return False
 
-
+# Testing user registration:
 # print(RegisterController.register('Edson', 'me@ecop.org', '123456'))
+
+# Testing user login:
 # print(LoginController.login('me@ecop.org', '123456'))
 
 # Edson Copque | https://linktr.ee/edsoncopque
