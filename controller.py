@@ -87,6 +87,24 @@ class LoginController():
         else:
             # return False
             return 'Invalid email or password.'
+        
+class RemoveController():
+    @classmethod
+    def remove(cls, rm_email):
+        session = return_session()
+        user_to_remove = session.query(Person).filter(Person.email == rm_email).first()
+
+        if not user_to_remove:
+            return 'User with the given e-mail does not exist.'
+        
+        try:
+            session.delete(user_to_remove)
+            session.commit()
+            return 'User removed successfully.'
+        
+        except Exception as error:
+            print(f'Error removing the user: {str(error)}')
+
 
 # Testing user registration:
 # print(RegisterController.register('Edson', 'me@ecop.org', '123456'))

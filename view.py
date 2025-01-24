@@ -1,6 +1,6 @@
 # FILE: /registration_and_login_project/view.py
 
-from controller import RegisterController, LoginController
+from controller import RegisterController, LoginController, RemoveController
 
 # Main Loop: User menu for registration or login: #31:
 while True:
@@ -8,7 +8,8 @@ while True:
     # Asking the user for their decision: #32:
     user_decision = int(input('Enter 1 to [register]\n'
                           'Enter 2 to [login]\n'
-                          'Enter 3 to [exit]: '))
+                          'Enter 3 to [remove]\n'
+                          'Enter 4 to [exit]: '))
     
     # Registration Flow: If the user chooses to register: #33:
     if user_decision == 1:
@@ -46,6 +47,17 @@ while True:
             print('Invalid e-mail or password.')
         else:
             print(result_login)
+
+    # Login flow: Removing account:
+    if user_decision == 3:
+        email = input('Enter the [e-mail] you want to remove: ')
+
+        result_remove = RemoveController.remove(email)
+
+        if not result_remove:
+            print('Invalid e-mail.')
+        else:
+            print(result_remove)
     
     # Exit Condition: If the user chooses to exit the program: #38:
     else:
