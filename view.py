@@ -20,18 +20,19 @@ while True:
         result_register = RegisterController.register(name, email, password)
         
         # Handling registration results and providing feedback: #35:
-        if result_register == 2:
-            print('Name [length] entered is invalid.')
-        elif result_register == 3:
-            print('E-mail [length] entered is invalid.')
-        elif result_register == 4:
-            print('Password [length] entered is invalid.')
-        elif result_register == 5:
-            print('Entered [e-mail] is already exists.')
-        elif result_register == 6:
-            print('Internal error.')
-        elif result_register == 1:
-            print('Registration completed successfully.')
+        # if result_register == 2:
+        #     print('Name [length] entered is invalid.')
+        # elif result_register == 3:
+        #     print('E-mail [length] entered is invalid.')
+        # elif result_register == 4:
+        #     print('Password [length] entered is invalid.')
+        # elif result_register == 5:
+        #     print('Entered [e-mail] is already exists.')
+        # elif result_register == 6:
+        #     print('Internal error.')
+        # elif result_register == 1:
+            # print('Registration completed successfully.')
+        print(result_register)
     
     # Login Flow: If the user chooses to login: #36:
     if user_decision == 2:

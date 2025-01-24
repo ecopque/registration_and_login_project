@@ -28,13 +28,17 @@ class RegisterController():
     @classmethod
     def check_data(cls, ck_name, ck_email,  ck_password):
         if len(ck_name) > 50 or len(ck_name) < 3:
-            return 2
+            # return 2
+            return '[Name] length is invalid. It should be between 3 and 50 characters.'
         if len(ck_email) > 30:
-            return 3
+            # return 3
+            return '[Email] length is invalid. It should be up to 30 characters.'
         if len(ck_password) > 500 or len(ck_password) < 6:
-            return 4
+            # return 4
+            return '[Password] length is invalid. It should be between 6 and 500 characters.'
         else:
-            return 1
+            # return 1
+            return 'Data is valid.'
 
     # Function to handle the registrations process: #23:
     @classmethod
@@ -44,11 +48,12 @@ class RegisterController():
         # Check if the e-mail is already taken: #24:
         user = session.query(Person).filter(Person.email == rg_email).all()
         if len(user) > 0:
-            return 5
+            # return 5
+            return 'The email already exists.'
         
         verified_data = cls.check_data(rg_name, rg_email, rg_password)
-        if verified_data != 1:
-            return verified_data # Data is not valid.
+        if verified_data != 'Data is valid.':
+            return verified_data # Data validation error message.
         
         try:
             # Generating password hash: #25:
@@ -58,10 +63,12 @@ class RegisterController():
             new_user = Person(name=rg_name, email=rg_email, password=password_hash)
             session.add(new_user)
             session.commit()
-            return 1
+            # return 1
+            return 'Registration completed successfully.'
                                 
-        except:
-            return 6
+        except Exception as error:
+            # return 6
+            return f'An internal error occurred: {str(error)}'
 
 # Login Controller: Class for handling user login: #27:
 class LoginController():
@@ -78,7 +85,8 @@ class LoginController():
         if len(logged) == 1:
             return {'logged': True, 'id': logged[0].id}
         else:
-            return False
+            # return False
+            return 'Invalid email or password.'
 
 # Testing user registration:
 # print(RegisterController.register('Edson', 'me@ecop.org', '123456'))
