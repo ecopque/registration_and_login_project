@@ -82,7 +82,7 @@ class LoginController():
         logged = session.query(Person).filter(Person.email == lg_email).filter(Person.password == lg_password).all()
 
         # Check if the login was successfully: #30:
-        if len(logged) == 1:
+        if len(logged) > 0:
             return {'logged': True, 'id': logged[0].id}
         else:
             # return False
