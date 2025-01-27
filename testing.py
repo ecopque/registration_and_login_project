@@ -92,7 +92,7 @@ class RegisterController():
 
 class LoginController():
     @classmethod
-    def login(lg_email, lg_password):
+    def login(cls, lg_email, lg_password):
         session = return_session()
         lg_password = hashlib.sha256(lg_password.encode()).hexdigest()
 
@@ -102,3 +102,20 @@ class LoginController():
             return f'Logged: {True}, Id: {logged[0].id}'
         else:
             return 'E-mail ou senha inválidos.'
+
+class RemoveController():
+    @classmethod
+    def remove(cls, rm_email):
+        session = return_session()
+
+        user_email = session.query(Person).filter(Person.email == rm_email)
+        if not user_email:
+            return 'E-mail não existe.'
+        
+        try:
+            session.delete(user_email)
+            session.commit()
+            return 'Usuário deletado com sucesso.'
+        
+        except Exception as error:
+            print(f'Error: {error}')
