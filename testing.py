@@ -119,3 +119,44 @@ class RemoveController():
         
         except Exception as error:
             print(f'Error: {error}')
+
+# view:
+
+from controller import RegisterController, LoginController, RemoveController
+while True:
+    print('===== [MENU] =====')
+    user_decision = input(int(('Enter 1 to register\n'
+                        'Enter 2 to login\n'
+                        'Enter 3 to remove\n'
+                        'Enter 4 to exit: ')))
+
+    if user_decision == 1:
+        name = input(str('Enter your name: '))
+        email = input(str('Enter your e-mail: '))
+        password = input('Enter your password: ')
+
+        new_user = RegisterController.register(name, email, password)
+        print(new_user)
+
+    if user_decision == 2:
+        email = input(str('Enter your e-mail: '))
+        password = input(str('Enter your password: '))
+
+        user_login = LoginController.login(email, password)
+        
+        if not user_login:
+            print('Invalid user or password')
+        else:
+            print(f'Login efetuado: {user_login}.')
+
+    if user_decision == 3:
+        email = input('Enter your e-mail: ')
+        user_email = RemoveController.remove(email)
+
+        if not user_email:
+            print(f'Usuário não existe.')
+        else:
+            print(f'Usuário removido: {user_email}')
+    
+    else:
+        break
