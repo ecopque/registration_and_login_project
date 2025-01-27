@@ -89,3 +89,16 @@ class RegisterController():
         
         except Exception as error:
             print(f'Error: {error}')
+
+class LoginController():
+    @classmethod
+    def login(lg_email, lg_password):
+        session = return_session()
+        lg_password = hashlib.sha256(lg_password.encode()).hexdigest()
+
+        logged = session.query(Person).filter(Person.email == lg_email).filter(Person.password == lg_password).first()
+
+        if len(logged) > 0:
+            return f'Logged: {True}, Id: {logged[0].id}'
+        else:
+            return 'E-mail ou senha inválidos.'
